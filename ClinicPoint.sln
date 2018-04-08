@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicPoint", "ClinicPoint\ClinicPoint.csproj", "{34A9A841-7D8E-4EC5-9C18-A3345D6DCFAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicPoint.Tests", "ClinicPoint.Tests\ClinicPoint.Tests.csproj", "{28F72E9A-E477-4D0F-B0A9-5C30941E1070}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34A9A841-7D8E-4EC5-9C18-A3345D6DCFAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34A9A841-7D8E-4EC5-9C18-A3345D6DCFAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34A9A841-7D8E-4EC5-9C18-A3345D6DCFAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34A9A841-7D8E-4EC5-9C18-A3345D6DCFAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28F72E9A-E477-4D0F-B0A9-5C30941E1070}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28F72E9A-E477-4D0F-B0A9-5C30941E1070}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28F72E9A-E477-4D0F-B0A9-5C30941E1070}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28F72E9A-E477-4D0F-B0A9-5C30941E1070}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {467204C4-E948-450F-97DB-F11AC79FD9CA}
+	EndGlobalSection
+EndGlobal
