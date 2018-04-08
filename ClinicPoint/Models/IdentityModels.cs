@@ -20,6 +20,11 @@ namespace ClinicPoint.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Patient> Patients { get; set; }
+        public DbSet<Specialty> Specialties { get; set; }
+        public DbSet<Physician> Physicians { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
