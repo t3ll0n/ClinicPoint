@@ -1,8 +1,101 @@
-﻿
+﻿@model IEnumerable<ClinicPoint.Models.Appointment>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Appointments";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Appointments</h2>
+<p>
+    @Html.ActionLink("New Appointment", "New", "Appointments", null, new { @class = "btn btn-primary" })
+</p>
+
+<table id="appointments" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Patient</th>
+            <th>Physician</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#appointments").DataTable({
+                ajax: {
+                    url: "/api/appointments",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "id",
+                        render: function (data, type, appointment) {
+                            return appointment.id;
+                        }
+                    },
+                    {
+                        data: "patient",
+                        render: function (data, type, appointment) {
+                            return appointment.patient.firstName + " " + appointment.patient.lastName;
+                        }
+                    },
+                    {
+                        data: "physician",
+                        render: function (data, type, appointment) {
+                            return "Dr. " + appointment.physician.firstName + " " + appointment.physician.lastName;
+                        }
+                    },
+                    {
+                        data: "date",
+                        render: function (data, type, appointment) {
+                            return appointment.date;
+                        }
+                    },
+                    {
+                        data: "time",
+                        render: function (data, type, appointment) {
+                            return appointment.time;
+                        }
+                    },
+                    {
+                        data: "id",
+                        render: function (data, type, appointment) {
+                            return "<a href='/appointment/edit/" + appointment.id + "'>Edit</a>";
+                        }
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-appointment-id=" + data + ">Delete</button>";
+                        }
+                    }
+                ]
+            });
+
+            $("#appointments").on("click", ".js-delete", function () {
+                var button = $(this);
+
+                bootbox.confirm("Are you sure you want to delete this appointment?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/appointment/" + button.attr("data-appointment-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
 
