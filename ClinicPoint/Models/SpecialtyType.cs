@@ -6,11 +6,12 @@ using System.Web;
 
 namespace ClinicPoint.Models
 {
-    public class Specialty
+    public class SpecialtyType
     {
         public int Id { get; set; }
 
         [Required]
         public string Name { get; set; }
+
     }
 }

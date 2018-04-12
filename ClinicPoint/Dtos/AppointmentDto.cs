@@ -4,22 +4,20 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace ClinicPoint.Models
+namespace ClinicPoint.Dtos
 {
-    public class Appointment
+    public class AppointmentDto
     {
         public int Id { get; set; }
 
-        public Patient Patient { get; set; }
+        public PatientDto Patient { get; set; }
 
         [Required]
-        [Display(Name = "Patient")]
         public int PatientId { get; set; }
 
-        public Physician Physician { get; set; }
+        public PhysicianDto Physician { get; set; }
 
         [Required]
-        [Display(Name = "Physician")]
         public int PhysicianID { get; set; }
 
         [Required]
