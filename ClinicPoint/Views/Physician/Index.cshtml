@@ -1,8 +1,100 @@
-﻿
+﻿@model IEnumerable<ClinicPoint.Models.Physician>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Physicians";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Physicians</h2>
 
+<p>
+    @Html.ActionLink("New Physcician", "New", "Physicians", null, new { @class = "btn btn-primary" })
+</p>
+
+<table id="physicians" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Specialty</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#physicians").DataTable({
+                ajax: {
+                    url: "/api/physicians",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "firstName",
+                        render: function (data, type, physician) {
+                            return physician.firstName;
+                        }
+                    },
+                    {
+                        data: "lastName",
+                        render: function (data, type, physician) {
+                            return physician.lastName;
+                        }
+                    },
+                    {
+                        data: "specialtyType",
+                        render: function (data, type, physician) {
+                            return physician.specialtyType.name;
+                        }
+                    },
+                    {
+                        data: "phone",
+                        render: function (data, type, physician) {
+                            return physician.phone;
+                        }
+                    },
+                    {
+                        data: "email",
+                        render: function (data, type, physician) {
+                            return physician.email;
+                        }
+                    },
+                    {
+                        data: "id",
+                        render: function (data, type, physician) {
+                            return "<a href='/physician/edit/" + physician.id + "'>Edit</a>";
+                        }
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-physician-id=" + data + ">Delete</button>";
+                        }
+                    }
+                ]
+            });
+
+            $("#physicians").on("click", ".js-delete", function () {
+                var button = $(this);
+
+                bootbox.confirm("Are you sure you want to delete this physician?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/physicians/" + button.attr("data-physician-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}

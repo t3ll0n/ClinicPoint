@@ -82,7 +82,7 @@
                     {
                         data: "id",
                         render: function (data) {
-                            return "<button class='btn-link js-delete' data-customer-id=" + data + ">Delete</button>";
+                            return "<button class='btn-link js-delete' data-patient-id=" + data + ">Delete</button>";
                         }
                     }
                 ]
@@ -94,7 +94,7 @@
                 bootbox.confirm("Are you sure you want to delete this patient?", function (result) {
                     if (result) {
                         $.ajax({
-                            url: "/api/patients/" + button.attr("data-customer-id"),
+                            url: "/api/patients/" + button.attr("data-patient-id"),
                             method: "DELETE",
                             success: function () {
                                 table.row(button.parents("tr")).remove().draw();
