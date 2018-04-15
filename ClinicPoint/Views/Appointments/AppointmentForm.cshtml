@@ -1,0 +1,41 @@
+﻿@model ClinicPoint.ViewModels.AppointmentFormViewModel
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+
+@Html.ValidationSummary()
+@using (Html.BeginForm("Save", "Appointments"))
+{
+    <div class="form-group">
+        @Html.LabelFor(a => a.Patients)
+        @Html.DropDownListFor(a => a.Appointment.PatientId, new SelectList(Model.Patients, "Id", "FullName"), "Select Patient", new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Appointment.Patient)
+    </div> 
+    <div class="form-group">
+        @Html.LabelFor(a => a.Physicians)
+        @Html.DropDownListFor(a => a.Appointment.PhysicianId, new SelectList(Model.Physicians, "Id", "FullName"), "Select Physician", new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Appointment.Physician)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(a => a.Appointment.Date)
+        @Html.TextBoxFor(a => a.Appointment.Date, "{0:d MM YYYY}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Appointment.Date)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(a => a.Appointment.Time)
+        @Html.TextBoxFor(a => a.Appointment.Time, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Appointment.Time)
+    </div>
+    @Html.HiddenFor(a => a.Appointment.Id)
+    @Html.AntiForgeryToken()
+    <button type="Submit" class="btn btn-primary">Submit</button>
+
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

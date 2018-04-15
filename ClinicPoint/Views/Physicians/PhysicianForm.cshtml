@@ -1,0 +1,56 @@
+﻿@model ClinicPoint.ViewModels.PhysicianFormViewModel
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+
+@Html.ValidationSummary()
+@using (Html.BeginForm("Save", "Physicians"))
+{
+    <div class="form-group">
+        @Html.LabelFor(p => p.Physician.FirstName)
+        @Html.TextBoxFor(p => p.Physician.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Physician.FirstName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.Physician.LastName)
+        @Html.TextBoxFor(p => p.Physician.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Physician.LastName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.Physician.Birthdate)
+        @Html.TextBoxFor(p => p.Physician.Birthdate, "{0:d MM YYYY}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Physician.Birthdate)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.Physician.SocialSecurityNumber)
+        @Html.TextBoxFor(p => p.Physician.SocialSecurityNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Physician.SocialSecurityNumber)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.Physician.Phone)
+        @Html.TextBoxFor(p => p.Physician.Phone, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Physician.Phone)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.Physician.Email)
+        @Html.TextBoxFor(p => p.Physician.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Physician.Email)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.SpecialtyTypes)
+        @Html.DropDownListFor(p => p.Physician.SpecialtyTypeId, new SelectList(Model.SpecialtyTypes, "Id", "Name"), "Select Specialty Type", new { @class="form-control"})
+        @Html.ValidationMessageFor(p => p.Physician.SpecialtyTypeId)
+    </div>
+    @Html.HiddenFor(p => p.Physician.Id)
+    @Html.AntiForgeryToken()
+    <button type="Submit" class="btn btn-primary">Submit</button>
+
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

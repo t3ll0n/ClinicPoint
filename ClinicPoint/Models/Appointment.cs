@@ -20,7 +20,7 @@ namespace ClinicPoint.Models
 
         [Required]
         [Display(Name = "Physician")]
-        public int PhysicianID { get; set; }
+        public int PhysicianId { get; set; }
 
         [Required]
         public DateTime Date { get; set; }

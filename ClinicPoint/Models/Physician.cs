@@ -18,6 +18,14 @@ namespace ClinicPoint.Models
         [Required]
         public string LastName { get; set; }
 
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;    
+            }
+        }
+
         [Display(Name = "SSN")]
         [Required]
         public int SocialSecurityNumber { get; set; }

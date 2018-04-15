@@ -7,7 +7,7 @@
 <h2>Physicians</h2>
 
 <p>
-    @Html.ActionLink("New Physcician", "New", "Physicians", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("New Physician", "New", "Physicians", null, new { @class = "btn btn-primary" })
 </p>
 
 <table id="physicians" class="table table-bordered table-hover">
@@ -68,7 +68,7 @@
                     {
                         data: "id",
                         render: function (data, type, physician) {
-                            return "<a href='/physician/edit/" + physician.id + "'>Edit</a>";
+                            return "<a href='/physicians/edit/" + physician.id + "'>Edit</a>";
                         }
                     },
                     {

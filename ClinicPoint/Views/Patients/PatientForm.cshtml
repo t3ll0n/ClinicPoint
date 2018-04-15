@@ -1,0 +1,51 @@
+﻿@model ClinicPoint.ViewModels.PatientFormViewModel
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+
+@Html.ValidationSummary()
+@using (Html.BeginForm("Save", "Patients"))
+{
+    <div class="form-group">
+        @Html.LabelFor(p => p.Patient.FirstName)
+        @Html.TextBoxFor(p => p.Patient.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Patient.FirstName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.Patient.LastName)
+        @Html.TextBoxFor(p => p.Patient.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Patient.LastName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.Patient.Birthdate)
+        @Html.TextBoxFor(p => p.Patient.Birthdate, "{0:d MM YYYY}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Patient.Birthdate)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.Patient.SocialSecurityNumber)
+        @Html.TextBoxFor(p => p.Patient.SocialSecurityNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Patient.SocialSecurityNumber)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.Patient.Phone)
+        @Html.TextBoxFor(p => p.Patient.Phone, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Patient.Phone)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.Patient.Email)
+        @Html.TextBoxFor(p => p.Patient.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(p => p.Patient.Email)
+    </div>
+    @Html.HiddenFor(p => p.Patient.Id)
+    @Html.AntiForgeryToken()
+    <button type="Submit" class="btn btn-primary">Submit</button>
+
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
