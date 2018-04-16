@@ -58,7 +58,7 @@
                     {
                         data: "birthDate",
                         render: function (data, type, patient) {
-                            return patient.birthdate;
+                            return $.datepicker.formatDate('mm/dd/yy', new Date(patient.birthdate.toString()));
                         }
                     },
                     {

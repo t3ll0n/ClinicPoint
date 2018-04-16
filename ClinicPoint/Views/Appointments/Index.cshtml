@@ -56,7 +56,7 @@
                     {
                         data: "date",
                         render: function (data, type, appointment) {
-                            return appointment.date;
+                            return $.datepicker.formatDate('mm/dd/yy', new Date(appointment.date.toString()));
                         }
                     },
                     {

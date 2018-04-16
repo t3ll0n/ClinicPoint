@@ -14,7 +14,8 @@ namespace ClinicPoint
                         "~/Scripts/respond.js",
                         "~/Scripts/bootbox.js",
                         "~/Scripts/datatables/jquery.datatables.js",
-                        "~/Scripts/datatables/datatables.bootstrap.js"
+                        "~/Scripts/datatables/datatables.bootstrap.js",
+                        "~/Scripts/jquery-ui.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -27,7 +28,8 @@ namespace ClinicPoint
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/content/datatables/css/datatables.bootstrap.css",
+                      "~/Content/datatables/css/datatables.bootstrap.css",
+                      "~/Content/jquery-ui.css",
                       "~/Content/site.css"));
         }
     }
