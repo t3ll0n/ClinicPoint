@@ -15,6 +15,7 @@ namespace ClinicPoint
                         "~/Scripts/bootbox.js",
                         "~/Scripts/datatables/jquery.datatables.js",
                         "~/Scripts/datatables/datatables.bootstrap.js",
+                        "~/Scripts/fullcalendar/fullcalendar.js",
                         "~/Scripts/jquery-ui.js"
                         ));
 
@@ -30,6 +31,7 @@ namespace ClinicPoint
                       "~/Content/bootstrap.css",
                       "~/Content/datatables/css/datatables.bootstrap.css",
                       "~/Content/jquery-ui.css",
+                      "~/Content/fullcalendar.print.css",
                       "~/Content/site.css"));
         }
     }
